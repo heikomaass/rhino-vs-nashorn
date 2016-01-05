@@ -1,2 +1,44 @@
 # rhinovsnashorn
-An octane based testing suite for rhino and nashorn scripting engine
+An [ octane 2.0 ] (https://github.com/chromium/octane) based testing suite for rhino and nashorn scripting engine.
+
+## How to run
+```
+export MAVEN_OPTS=-Xmx1024m
+mvn exec:java -Dexec.mainClass="de.heikomaass.rhinovsnashorn.NashornBenchmark"
+mvn exec:java -Dexec.mainClass="de.heikomaass.rhinovsnashorn.RhinoBenchmark"
+```
+
+## Example test results
+
+The following test results were generated on a MacBook Pro (2 GHz Core i7) with JDK 1.8.0\_65.
+The heap size (Xmx) was set to 1024M. Please note that Rhino could not run some of the tests due to language incompatibilities or the 64k bytecode limit. 
+
+Test                | Rhin Score\* | Nashorn Score\*|
+--------------------|---------------|----------------|
+richards            | 502,5         | 1084           |
+deltablue           | 531,5         | 131            |
+crypto              | 499,5         | 778,5          |
+RayTrace            | 643           | 631,5          |
+EarleyBoyer         | 673           | 694,5          |
+RegExp              | 170           | 495,5          |        
+Splay               | 998           | 1700,5         |
+SplayLatency        | 769,5         | 864,5          |
+NavierStokes        | 513           | 1199,5         |
+PdfJS               | -             | 397,5          |
+Mandreel            | -             | 187,5          |
+MandreelLatency     | -             | 193,5          |
+Gameboy             | -             | 376            |
+CodeLoad            | 3919,5        | 57,55          |
+Box2D               | 594           | 151,5          |
+TypeScript          | -             | 1014,5         |
+
+
+\* Median score of four test runs
+
+
+
+
+
+
+
+
