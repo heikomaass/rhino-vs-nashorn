@@ -1,5 +1,6 @@
 # rhino-vs-nashorn
 An [ octane 2.0 ] (https://github.com/chromium/octane) based testing suite for rhino and nashorn scripting engine.
+At the moment the [Rhino Version 1.7.7 ] (https://github.com/mozilla/rhino/releases/tag/Rhino1_7_7_RELEASE) is benchmarked.
 
 ## How to run
 ```
@@ -10,8 +11,8 @@ mvn exec:java -Dexec.mainClass="de.heikomaass.rhinovsnashorn.RhinoBenchmark"
 
 ## Example test results
 
-The following test results were generated on a MacBook Pro (2 GHz Core i7) with JDK 1.8.0\_65.
-The heap size (Xmx) was set to 1024M. Please note that Rhino could not run some of the tests due to language incompatibilities or the 64k bytecode limit. 
+The following test results were generated on a MacBook Pro (2 GHz Core i7) with JDK 1.8.0\_65. 
+The heap size (Xmx) was set to 1024m. Please note that Rhino could not run some of the tests due to language incompatibilities or the 64k bytecode limit. 
 
 Test                | Rhino Score\* | Nashorn Score\*|
 --------------------|---------------|----------------|
