@@ -13,6 +13,7 @@ public class RhinoBenchmark {
 
     public static void main(String[] args) throws Exception {
         Context context = Context.enter();
+        context.setLanguageVersion(Context.VERSION_1_8);
         ScriptableObject scope = context.initStandardObjects();
         scope.put("callbacks", scope, new BenchmarkCallbacks());
 
@@ -28,8 +29,8 @@ public class RhinoBenchmark {
 
 //        addScript("/pdfjs.js", context, scope);
 //        addScript("/mandreel.js", context, scope);
-//        addScript("/gbemu-part1.js", context, scope);
-//        addScript("/gbemu-part2.js", context, scope);
+        addScript("/gbemu-part1.js", context, scope);
+        addScript("/gbemu-part2.js", context, scope);
         addScript("/code-load.js", context, scope);
         addScript("/box2d.js", context, scope);
 //        addScript("/zlib.js", context, scope);
