@@ -16,7 +16,7 @@ mvn exec:java -Dexec.mainClass="de.heikomaass.rhinovsnashorn.RhinoBenchmark"
 The following test results were generated on a MacBook Pro (2 GHz Core i7) with JDK 1.8.0\_65. 
 The heap size (Xmx) was set to 1024m. All testsuites were executed four times to allow the engines to speed up.
 
-### Mozilla Rhino
+### Mozilla Rhino 1.7.7
 
 Test             | Iteration 1   | Iteration 2   | Iteration 3   | Iteration 4   |
 -----------------|---------------|---------------|---------------|---------------|
