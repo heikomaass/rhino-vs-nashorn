@@ -15,7 +15,6 @@ public class RhinoBenchmark {
         Context context = Context.enter();
         context.setLanguageVersion(Context.VERSION_1_8);
         ScriptableObject scope = context.initStandardObjects();
-        scope.put("callbacks", scope, new BenchmarkCallbacks());
 
         addScript("/base.js", context, scope);
         addScript("/richards.js", context, scope);
@@ -26,26 +25,20 @@ public class RhinoBenchmark {
         addScript("/regexp.js", context, scope);
         addScript("/splay.js", context, scope);
         addScript("/navier-stokes.js", context, scope);
-
 //        addScript("/pdfjs.js", context, scope);
-//        addScript("/mandreel.js", context, scope);
-        addScript("/gbemu-part1.js", context, scope);
-        addScript("/gbemu-part2.js", context, scope);
         addScript("/code-load.js", context, scope);
-        addScript("/box2d.js", context, scope);
-//        addScript("/zlib.js", context, scope);
-//        addScript("/zlib-data.js", context, scope);
-//        addScript("/typescript.js", context, scope);
-//        addScript("/typescript-input.js", context, scope);
-//        addScript("/typescript-compiler.js", context, scope);
 
-        context.evaluateString(scope, " BenchmarkSuite.RunSuites({\n" +
-                "      NotifyStart : callbacks.showBox,\n" +
-                "      NotifyError : callbacks.addError,\n" +
-                "      NotifyResult : callbacks.addResult,\n" +
-                "      NotifyScore : callbacks.addScore\n" +
-                "    },\n" +
-                "    []);", "RunSuites", 1, null);
+        for (int i = 0; i < 4; i++) {
+            context.evaluateString(scope, " BenchmarkSuite.RunSuites({\n" +
+                    "      NotifyStart : Packages.de.heikomaass.rhinovsnashorn.BenchmarkCallbacks.showBox,\n" +
+                    "      NotifyError : Packages.de.heikomaass.rhinovsnashorn.BenchmarkCallbacks.addError,\n" +
+                    "      NotifyResult : Packages.de.heikomaass.rhinovsnashorn.BenchmarkCallbacks.addResult,\n" +
+                    "      NotifyScore : Packages.de.heikomaass.rhinovsnashorn.BenchmarkCallbacks.addScore\n" +
+                    "    },\n" +
+                    "    []);", "RunSuites", 1, null);
+        }
+        BenchmarkCallbacks.exportToCsv();
+
     }
 
     private static void addScript(String path, Context context, ScriptableObject scope) throws IOException {
